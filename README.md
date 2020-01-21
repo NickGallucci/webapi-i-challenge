@@ -82,7 +82,7 @@ When the client makes a `POST` request to `/api/users`:
 
 When the client makes a `GET` request to `/api/users`:
 
-- If there's an error in retrieving the _users_ from the database:
+X- If there's an error in retrieving the _users_ from the database:
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The users information could not be retrieved." }`.
