@@ -41,9 +41,9 @@ server.post('/api/users', (req, res) => {
 
 server.get('/api/users', (req, res) => {
     Users.find()
-        .then(users => {
-            console.log('Users', users);
-            res.status(201).json(users)
+        .then(user => {
+            console.log('Users', user);
+            res.status(201).json(user)
         })
         .catch(error => {
             console.log(error);
@@ -52,9 +52,21 @@ server.get('/api/users', (req, res) => {
 })
 
 server.get('/api/users/:id', (req, res) => {
-    Users.findById()
+    Users.findById(req.params.id)
         .then(users => {
-            res.status()
+            if (!user){
+                res.status(404).json({
+                    message: "The user with the specified ID does not exist." 
+                });
+            } else{
+                res.status(200).json(user);
+            }
+        })
+        .catch(error => {
+            console.log("error getting /user");
+            res.status(500).json({
+                errorMessage: "The user information could not be retrieved."
+            })
         })
 })
 
